@@ -18,6 +18,10 @@ public class LoadFromFile {
         return this.textOfFile;
     }
 
+    public ArrayList<Password> getPasswords() {
+        return this.passwords;
+    }
+
     private void fromTextToArrays() {
         String[] arr = this.textOfFile.split("\n");
         String[][] both = new String[arr.length][2];
@@ -33,9 +37,7 @@ public class LoadFromFile {
 
     }
 
-    public ArrayList<Password> getPasswords() {
-        return this.passwords;
-    }
+
 
 
 }
