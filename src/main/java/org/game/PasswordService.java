@@ -4,17 +4,30 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
-public class AddPassword {
+public class PasswordService {
     private String password;
     private int attemps;
 
-    AddPassword() throws IOException {
-        aksInTerminalAndAdd();
+    private ArrayList<Password> passwords = new ArrayList<Password>();
+
+    PasswordService() throws IOException {
+        FileService fileService = new FileService();
+        this.passwords = fileService.getPasswords();
+
     }
 
-    private void aksInTerminalAndAdd() throws IOException {
+    public Password getRandomPassword() {
+        Random rand = new Random();
+        int idx = rand.nextInt(passwords.size());
+
+        return passwords.get(idx);
+    }
+
+    public void aksInTerminalAndAdd() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj hasło, które ma zostać dodane: ");
         password = scanner.nextLine();
@@ -34,15 +47,14 @@ public class AddPassword {
 
         if (!flag) {
             System.out.println("Podane hasło zawiera cyfrę lub inny znak nie będący literą. Podaj nowe poprawne hasło!");
-            AddPassword addPassword = new AddPassword();
+            PasswordService passwordService = new PasswordService();
         } else if (attemps > 11) {
             System.out.println("Podana liczba jest większ niż 11, spróbuj ponownie!");
-            AddPassword addPassword = new AddPassword();
+            PasswordService passwordService = new PasswordService();
 
         } else {
-            String myNew = "\n" + password + "-" + attemps;
-            String textOfFile = new String(Files.readAllBytes(Paths.get("C:\\Users\\akowalewski\\IdeaProjects\\HangmanMvn\\src\\main\\resources\\passwords.txt")));
-            Files.write(Paths.get("C:\\Users\\akowalewski\\IdeaProjects\\HangmanMvn\\src\\main\\resources\\passwords.txt"), myNew.getBytes(), StandardOpenOption.APPEND);
+            FileService fileService = new FileService();
+            fileService.saveToFile(password, attemps);
         }
 
     }

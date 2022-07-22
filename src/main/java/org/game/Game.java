@@ -2,7 +2,6 @@ package org.game;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -10,22 +9,18 @@ public class Game {
     private ArrayList<Password> passwords = new ArrayList<Password>();
 
     Game() throws IOException {
-        LoadFromFile loadFromFile = new LoadFromFile();
-        this.passwords = loadFromFile.getPasswords();
+        FileService fileService = new FileService();
+        this.passwords = fileService.getPasswords();
 
         playingGame();
 
     }
 
-    public Password getRandomPassword() {
-        Random rand = new Random();
-        int idx = rand.nextInt(passwords.size());
 
-        return passwords.get(idx);
-    }
 
     private void playingGame() throws IOException {
-        Password gamePassword = getRandomPassword();
+        PasswordService passwordService = new PasswordService();
+        Password gamePassword = passwordService.getRandomPassword();
         String value = gamePassword.getValue();
         Integer attemps = gamePassword.getAttempts();
         Integer drawAttemps = attemps;

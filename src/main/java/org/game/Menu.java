@@ -35,7 +35,8 @@ public class Menu {
         if (choice == 1) {
             Game game = new Game();
         } else if (choice == 2) {
-            AddPassword addPass = new AddPassword();
+            PasswordService addPass = new PasswordService();
+            addPass.aksInTerminalAndAdd();
         } else {
             System.out.println("Nie poprawny input, spróbuj pownownie");
             Main main = new Main();
@@ -55,7 +56,7 @@ public class Menu {
         if (choice == 1) {
             Game game = new Game();
         } else if (choice == 2) {
-            AddPassword addPass = new AddPassword();
+            PasswordService addPass = new PasswordService();
         } else if (choice == 3) {
             System.exit(0);
         } else {
