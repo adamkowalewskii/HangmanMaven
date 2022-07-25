@@ -1,6 +1,7 @@
 package org.game;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,12 +9,12 @@ public class Menu {
 
     private int choice = 0;
 
-    Menu() throws IOException {
+    Menu() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         start();
         logic();
     }
 
-    Menu(boolean flag) throws IOException {
+    Menu(boolean flag) throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         again();
     }
@@ -31,7 +32,7 @@ public class Menu {
 
     }
 
-    private void logic() throws IOException {
+    private void logic() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         if (choice == 1) {
             Game game = new Game();
         } else if (choice == 2) {
@@ -43,7 +44,7 @@ public class Menu {
         }
     }
 
-    private void again() throws IOException {
+    private void again() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         System.out.println("\n1.Zagraj ponownie\n2.Dodaj Hasło do listy\n3.Zakończ rozgrywkę");
         System.out.print("Twój wybór: ");
         try {

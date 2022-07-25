@@ -1,9 +1,7 @@
 package org.game;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,7 +12,7 @@ public class PasswordService {
 
     private ArrayList<Password> passwords = new ArrayList<Password>();
 
-    PasswordService() throws IOException {
+    PasswordService() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         FileService fileService = new FileService();
         this.passwords = fileService.getPasswords();
 
@@ -27,7 +25,7 @@ public class PasswordService {
         return passwords.get(idx);
     }
 
-    public void aksInTerminalAndAdd() throws IOException {
+    public void aksInTerminalAndAdd() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj hasło, które ma zostać dodane: ");
         password = scanner.nextLine();
@@ -54,7 +52,7 @@ public class PasswordService {
 
         } else {
             FileService fileService = new FileService();
-            fileService.saveToFile(password, attemps);
+            fileService.saveToDatabse(password, attemps);
         }
 
     }

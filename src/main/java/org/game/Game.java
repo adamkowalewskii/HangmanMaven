@@ -1,6 +1,7 @@
 package org.game;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class Game {
 
     private ArrayList<Password> passwords = new ArrayList<Password>();
 
-    Game() throws IOException {
+    Game() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         FileService fileService = new FileService();
         this.passwords = fileService.getPasswords();
 
@@ -18,7 +19,7 @@ public class Game {
 
 
 
-    private void playingGame() throws IOException {
+    private void playingGame() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         PasswordService passwordService = new PasswordService();
         Password gamePassword = passwordService.getRandomPassword();
         String value = gamePassword.getValue();
