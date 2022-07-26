@@ -29,14 +29,8 @@ public class Game {
         Integer misses = 0;
 
         String hiddenPassword = "";
-        for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) == ' ') {
-                hiddenPassword += "\t";
-            } else {
-                hiddenPassword += "_";
-            }
+        hiddenPassword = transformHiddenPassword(hiddenPassword, value);
 
-        }
 
         while (true) {
             System.out.println("\n==================\n");
@@ -100,6 +94,18 @@ public class Game {
                 }
             }
         }
+    }
+
+    private String transformHiddenPassword(String hiddenPassword, String value){
+        for (int i = 0; i < value.length(); i++) {
+            if (value.charAt(i) == ' ') {
+                hiddenPassword += "\t";
+            } else {
+                hiddenPassword += "_";
+            }
+
+        }
+        return hiddenPassword;
     }
 
     private String workingOnHiddenPassword(String hiddenPassword) {
