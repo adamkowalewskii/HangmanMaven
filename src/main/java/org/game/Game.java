@@ -10,8 +10,8 @@ public class Game {
     private ArrayList<Password> passwords = new ArrayList<Password>();
 
     Game() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        FileService fileService = new FileService();
-        this.passwords = fileService.getPasswords();
+        PasswordService passwordService = new PasswordService();
+        this.passwords = passwordService.getPasswords();
 
         playingGame();
 

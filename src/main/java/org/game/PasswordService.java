@@ -12,10 +12,16 @@ public class PasswordService {
 
     private ArrayList<Password> passwords = new ArrayList<Password>();
 
+
+
     PasswordService() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         FileService fileService = new FileService();
-        this.passwords = fileService.getPasswords();
+        this.passwords = fileService.getLoadPasswords();
 
+    }
+
+    public ArrayList<Password> getPasswords() {
+        return this.passwords;
     }
 
     public Password getRandomPassword() {

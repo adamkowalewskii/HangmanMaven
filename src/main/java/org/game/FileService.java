@@ -24,7 +24,7 @@ public class FileService {
         return this.textOfFile;
     }
 
-    public ArrayList<Password> getPasswords() {
+    public ArrayList<Password> getLoadPasswords() {
         return this.passwords;
     }
 
