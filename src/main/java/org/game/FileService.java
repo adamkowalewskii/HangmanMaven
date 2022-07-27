@@ -33,8 +33,7 @@ public class FileService {
 //        String textOfFile = new String(Files.readAllBytes(Paths.get("C:\\Users\\akowalewski\\IdeaProjects\\HangmanMvn\\src\\main\\resources\\passwords.txt")));
 //        Files.write(Paths.get("C:\\Users\\akowalewski\\IdeaProjects\\HangmanMvn\\src\\main\\resources\\passwords.txt"), myNew.getBytes(), StandardOpenOption.APPEND);
 
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        connection = DriverManager.getConnection(url, username, databasePassword);
+        connection = DBConnection.getConnection();
         PreparedStatement ps = connection.prepareStatement("Insert into myDatabase.passwords values(?)");
         ps.setString(1, password);
 
@@ -47,8 +46,7 @@ public class FileService {
 
     private void loadFromDatabse() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        connection = DriverManager.getConnection(url, username, databasePassword);
+        connection = DBConnection.getConnection();
         PreparedStatement ps = connection.prepareStatement("Select * from myDatabase.passwords");
         ResultSet rs = ps.executeQuery();
 
