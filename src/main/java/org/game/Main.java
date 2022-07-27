@@ -11,7 +11,7 @@ public class Main extends Menu {
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Menu menu = new Menu();
         while (true) {
-            Menu AgainMenu = new Menu(false);
+            menu.again();
         }
     }
 }

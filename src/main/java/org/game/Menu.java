@@ -8,16 +8,14 @@ import java.util.Scanner;
 public class Menu {
 
     private int choice = 0;
+    private boolean flag = true;
 
     Menu() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        start();
-        logic();
+
+            start();
+            logic();
     }
 
-    Menu(boolean flag) throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-
-        again();
-    }
 
     private void start() {
         System.out.println("1.Graj\n2.Dodaj Hasło do listy");
@@ -32,19 +30,7 @@ public class Menu {
 
     }
 
-    private void logic() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        if (choice == 1) {
-            Game game = new Game();
-        } else if (choice == 2) {
-            PasswordService addPass = new PasswordService();
-            addPass.aksInTerminalAndAdd();
-        } else {
-            System.out.println("Nie poprawny input, spróbuj pownownie");
-            Main main = new Main();
-        }
-    }
-
-    private void again() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public void again() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         System.out.println("\n1.Zagraj ponownie\n2.Dodaj Hasło do listy\n3.Zakończ rozgrywkę");
         System.out.print("Twój wybór: ");
         try {
@@ -65,6 +51,20 @@ public class Menu {
             Main main = new Main();
         }
     }
+
+    private void logic() throws IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        if (choice == 1) {
+            Game game = new Game();
+        } else if (choice == 2) {
+            PasswordService addPass = new PasswordService();
+            addPass.aksInTerminalAndAdd();
+        } else {
+            System.out.println("Nie poprawny input, spróbuj pownownie");
+            Main main = new Main();
+        }
+    }
+
+
 
 
 }
